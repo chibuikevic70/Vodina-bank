@@ -1,0 +1,2 @@
+// Dashboard for Vodina Bank - Debit Card, Balance, Transactions, Expenses 85.5%, Savings, Loans
+// Uses components: Sidebar, DebitCard, BalanceCard, Transactions, ExpensesGauge, SavingsGoals, LoansCard
