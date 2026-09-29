@@ -1,0 +1,27 @@
+name: Vodina Bank AWS OIDC Test
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  aws-oidc-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: eu-west-2
+          role-to-assume: arn:aws:iam::936274645592:role/VodinaBank-githubactions-role
+
+      - name: Verify AWS identity
+        run: aws sts get-caller-identity
