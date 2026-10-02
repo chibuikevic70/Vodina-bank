@@ -37,13 +37,9 @@ jobs:
         run: |
           docker build \
             -t ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ github.sha }} \
-            -t ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:dev \
             -f backend/Dockerfile .
 
-      - name: Push Docker images
+      - name: Push Docker image
         run: |
           docker push \
             ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ github.sha }}
-
-          docker push \
-            ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:dev
